@@ -85,7 +85,7 @@ elif category == 2:
 
 
 
-
+print("Thanks for playing Quiz Bowl!")
 db.close()
 
 
