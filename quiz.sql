@@ -1,9 +1,3 @@
-DROP TABLE ENGL;
-DROP TABLE DBMGMT;
-DROP TABLE BMGT;
-DROP TABLE ECON;
-DROP TABLE DS;
-
 CREATE TABLE IF NOT EXISTS ENGL(
                id INTEGER PRIMARY KEY AUTOINCREMENT,
                question TEXT NOT NULL,
@@ -83,7 +77,42 @@ VALUES ("What is the definition of a metaphor?",
         "B) A figure of speech that directly refers to one thing by mentioning another.", 
         "C) A comparison between two unlike things using 'like' or 'as'.", 
         "D) Giving human characteristics to non-human things or animals.", 
-        "D");
+        "D"),
+
+        ("What is the definition of a hyperbole?",
+        "A) A figure of speech that directly refers to one thing by mentioning another.",
+        "B) A comparison between two unlike things using 'like' or 'as'.",
+        "C) The use of words that imitate sounds.",
+        "D) An exaggerated statement or claim not meant to be taken literally.",
+        "D"),
+
+        ("What is the definition of an oxymoron?",
+        "A) A figure of speech that directly refers to one thing by mentioning another.",
+        "B) A comparison between two unlike things using 'like' or 'as'.",
+        "C) A combination of contradictory or incongruous words.",
+        "D) The use of words that imitate sounds.",
+        "C"),
+
+        ("What is the definition of a paradox?",
+        "A) A figure of speech that directly refers to one thing by mentioning another.",
+        "B) A comparison between two unlike things using 'like' or 'as'.",
+        "C) A statement that appears to be self-contradictory or absurd but may be true.",
+        "D) The use of words that imitate sounds.",
+        "C"),
+
+        ("What is the definition of an allusion?",
+        "A) A figure of speech that directly refers to one thing by mentioning another.",
+        "B) A comparison between two unlike things using 'like' or 'as'.",
+        "C) An expression designed to call something to mind without mentioning it explicitly.",
+        "D) The use of words that imitate sounds.",
+        "C"),
+
+        ("What is the definition of an idiom?",
+        "A) A figure of speech that directly refers to one thing by mentioning another.",
+        "B) A comparison between two unlike things using 'like' or 'as'.",
+        "C) A group of words established by usage as having a meaning not deducible from those of the individual words.",
+        "D) The use of words that imitate sounds.",
+        "C");
 
 INSERT INTO DBMGMT (question, option_a, option_b, option_c, option_d, answer)
 VALUES ("What is a primary key in a relational database?", 

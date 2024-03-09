@@ -1,4 +1,5 @@
 import sqlite3
+import os
 
 # https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal
 RED = '\33[31m'
@@ -9,7 +10,11 @@ END = '\33[0m'
 with open("quiz.sql", "r") as file:
     script = file.read()
 
-# Create database file 
+# If quiz.db exists, then remove it
+if (os.path.exists("quiz.db")):
+    os.remove("quiz.db")
+
+# Connect to database and populate with quiz questions
 db = sqlite3.connect("quiz.db")
 cursor = db.cursor()
 cursor.executescript(script)
@@ -53,10 +58,10 @@ if category == 1:
         print(f"    {option_d}")
         user_answer = input("Enter A, B, C, or D: ")
         if user_answer == correct_answer:
-            print(f"{GREEN} That is correct!{END}")
+            print(f"{GREEN}That is correct!{END}")
             correct += 1
         else:
-            print(f"{RED} Sorry, that is incorrect!{END}")
+            print(f"{RED}Sorry, that is incorrect!{END}")
     print(f"You answered {correct}/{len(questions)} correct.")
 elif category == 2:
     # BMGT
@@ -77,13 +82,83 @@ elif category == 2:
         print(f"    {option_d}")
         user_answer = input("Enter A, B, C, or D: ")
         if user_answer == correct_answer:
-            print(f"{GREEN} That is correct!{END}")
+            print(f"{GREEN}That is correct!{END}")
             correct += 1
         else:
-            print(f"{RED} Sorry, that is incorrect!{END}")
+            print(f"{RED}Sorry, that is incorrect!{END}")
     print(f"You answered {correct}/{len(questions)} correct.")
-
-
+elif category == 3:
+    # DBMGMT
+    questions = cursor.execute("SELECT * FROM DBMGMT").fetchall()
+    correct = 0
+    for question in questions:
+        question_num = question[0]
+        question_string = question[1]
+        option_a = question[2]
+        option_b = question[3]
+        option_c = question[4]
+        option_d = question[5]
+        correct_answer = question[6]
+        print(f"{question_num}. {question_string}")
+        print(f"    {option_a}")
+        print(f"    {option_b}")
+        print(f"    {option_c}")
+        print(f"    {option_d}")
+        user_answer = input("Enter A, B, C, or D: ")
+        if user_answer == correct_answer:
+            print(f"{GREEN}That is correct!{END}")
+            correct += 1
+        else:
+            print(f"{RED}Sorry, that is incorrect!{END}")
+    print(f"You answered {correct}/{len(questions)} correct.")
+elif category == 4:
+    # ECON
+    questions = cursor.execute("SELECT * FROM ECON").fetchall()
+    correct = 0
+    for question in questions:
+        question_num = question[0]
+        question_string = question[1]
+        option_a = question[2]
+        option_b = question[3]
+        option_c = question[4]
+        option_d = question[5]
+        correct_answer = question[6]
+        print(f"{question_num}. {question_string}")
+        print(f"    {option_a}")
+        print(f"    {option_b}")
+        print(f"    {option_c}")
+        print(f"    {option_d}")
+        user_answer = input("Enter A, B, C, or D: ")
+        if user_answer == correct_answer:
+            print(f"{GREEN}That is correct!{END}")
+            correct += 1
+        else:
+            print(f"{RED}Sorry, that is incorrect!{END}")
+    print(f"You answered {correct}/{len(questions)} correct.")
+elif category == 5:
+    # DS
+    questions = cursor.execute("SELECT * FROM DS").fetchall()
+    correct = 0
+    for question in questions:
+        question_num = question[0]
+        question_string = question[1]
+        option_a = question[2]
+        option_b = question[3]
+        option_c = question[4]
+        option_d = question[5]
+        correct_answer = question[6]
+        print(f"{question_num}. {question_string}")
+        print(f"    {option_a}")
+        print(f"    {option_b}")
+        print(f"    {option_c}")
+        print(f"    {option_d}")
+        user_answer = input("Enter A, B, C, or D: ")
+        if user_answer == correct_answer:
+            print(f"{GREEN}That is correct!{END}")
+            correct += 1
+        else:
+            print(f"{RED}Sorry, that is incorrect!{END}")
+    print(f"You answered {correct}/{len(questions)} correct.")
 
 print("Thanks for playing Quiz Bowl!")
 db.close()
